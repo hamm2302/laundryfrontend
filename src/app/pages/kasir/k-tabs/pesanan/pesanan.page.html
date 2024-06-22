@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Daftar Pesanan
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="pesananList && pesananList.length > 0">
+    <ion-item *ngFor="let pesanan of pesananList">
+      <ion-label>
+        <h2>{{ pesanan.layanan.nama }}</h2>
+        <p>Pelanggan: {{ pesanan.pelanggan.nama }}</p>
+        <p>Jumlah: {{ pesanan.jumlah }}</p>
+        <p>Tanggal Pemesanan: {{ pesanan.tanggal_pemesanan }}</p>
+        <p>Status: {{ pesanan.status }}</p>
+        <p>Total Harga: {{ pesanan.total_harga }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-note *ngIf="!(pesananList && pesananList.length > 0)">Tidak ada data pesanan.</ion-note>
+</ion-content>

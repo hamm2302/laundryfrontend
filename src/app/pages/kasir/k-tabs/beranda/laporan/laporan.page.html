@@ -1,14 +1,14 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Laporan</ion-title>
+    <ion-title>Input Laporan</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">laporan</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <p>APIS CABUL</p>
+<ion-content>
+  <form (submit)="submitLaporan($event)">
+    <ion-item>
+      <ion-input type="date" [(ngModel)]="tanggal" name="tanggal" required></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit">Buat Laporan</ion-button>
+  </form>
 </ion-content>

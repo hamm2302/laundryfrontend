@@ -15,7 +15,7 @@ export class RegisterPage implements OnInit {
   ) { }
 
   form = {
-    name: '',
+    nama: '',
     email: '',
     password: ''
   }

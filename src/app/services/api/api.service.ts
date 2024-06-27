@@ -25,7 +25,7 @@ export class ApiService {
       .subscribe(async (res: any) => {
         console.log(res);
         localStorage.setItem('token', res['token']);
-        this.router.navigateByUrl('k-tabs/beranda');
+        this.router.navigateByUrl('o-tabs/beranda');
       });
     // console.log(form);
   }
@@ -34,7 +34,7 @@ export class ApiService {
   public register(form: any) {
     this.http
       .post(environment.ApiURL + 'register', {
-        name: form.name,
+        nama: form.nama,
         email: form.email,
         password: form.password,
       })

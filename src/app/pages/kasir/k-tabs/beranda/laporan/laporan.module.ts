@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LaporanPageRoutingModule } from './laporan-routing.module';
 
 import { LaporanPage } from './laporan.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LaporanPageRoutingModule
+    LaporanPageRoutingModule,
+    HttpClientModule
   ],
   declarations: [LaporanPage]
 })

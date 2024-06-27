@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
     if (token) {
       if(token != ''){
         console.log('login');
-        this.router.navigateByUrl('k-tabs/beranda');
+        this.router.navigateByUrl('o-tabs/beranda');
       }
     }
     this.presentingElement = document.querySelector('.ion-page');

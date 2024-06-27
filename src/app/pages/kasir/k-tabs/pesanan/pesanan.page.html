@@ -10,13 +10,16 @@
   <ion-list *ngIf="pesananList && pesananList.length > 0">
     <ion-item *ngFor="let pesanan of pesananList">
       <ion-label>
-        <h2>{{ pesanan.layanan.nama }}</h2>
-        <p>Pelanggan: {{ pesanan.pelanggan.nama }}</p>
+        <h2>Layanan: {{ pesanan?.layanan?.nama }}</h2>
+        <p>Pelanggan: {{ pesanan?.pelanggan?.nama }}</p>
         <p>Jumlah: {{ pesanan.jumlah }}</p>
         <p>Tanggal Pemesanan: {{ pesanan.tanggal_pemesanan }}</p>
         <p>Status: {{ pesanan.status }}</p>
         <p>Total Harga: {{ pesanan.total_harga }}</p>
       </ion-label>
+      <ion-button *ngIf="pesanan.status === 'proses'" (click)="updatePesananStatus(pesanan.id)" slot="end">
+        Selesai
+      </ion-button>
     </ion-item>
   </ion-list>
   <ion-note *ngIf="!(pesananList && pesananList.length > 0)">Tidak ada data pesanan.</ion-note>

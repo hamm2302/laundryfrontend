@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   // ApiURL: 'https://projectdesa.my.id/api/'
-  ApiURL: 'http://127.0.0.1:8000/api/'
+  ApiURL: 'http://127.0.0.1:8000/api/',
+  baseUrl: 'http://127.0.0.1:8000',
+  apiKey: 'base64:us9PihSWHY64njlB+07DV0+ZMn7qGD7+peDUvcGoBfs='
 };
 
 /*

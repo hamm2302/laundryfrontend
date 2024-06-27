@@ -49,4 +49,16 @@ export class PesananPage implements OnInit {
         }
       );
   }
+  updatePesananStatus(id: number): void {
+    this.pesananService.updateStatus(id).subscribe(
+      response => {
+        alert(response.message);
+        this.getAllPesanan(); // Refresh list pesanan setelah update
+      },
+      error => {
+        console.error('Error updating pesanan status:', error);
+        alert('Terjadi kesalahan saat mengubah status pesanan. Silakan coba lagi.');
+      }
+    );
+  }
 }

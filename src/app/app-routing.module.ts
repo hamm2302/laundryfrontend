@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: 'onboard',
-    loadChildren: () => import('./pages/welcome/onboard/onboard.module').then( m => m.OnboardPageModule)
-  },
   {
     path: '',
     redirectTo: 'onboard',
     pathMatch: 'full'
   },
   {
+    path: 'onboard',
+    loadChildren: () => import('./pages/welcome/onboard/onboard.module').then( m => m.OnboardPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'login',
-    loadChildren: () => import('./pages/welcome/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/welcome/login/login.module').then( m => m.LoginPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -21,11 +24,11 @@ const routes: Routes = [
   },
   {
     path: 'k-tabs',
-    loadChildren: () => import('./pages/kasir/k-tabs/k-tabs.module').then( m => m.KTabsPageModule)
+    loadChildren: () => import('./pages/kasir/k-tabs/k-tabs.module').then( m => m.KTabsPageModule),
   },
   {
     path: 'o-tabs',
-    loadChildren: () => import('./pages/owner/o-tabs/o-tabs.module').then( m => m.OTabsPageModule)
+    loadChildren: () => import('./pages/owner/o-tabs/o-tabs.module').then( m => m.OTabsPageModule),
   },
   {
     path: 'outlet',
@@ -33,7 +36,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('./pages/welcome/admin/admin.module').then( m => m.AdminPageModule)
+    loadChildren: () => import('./pages/welcome/admin/admin.module').then( m => m.AdminPageModule),
+    canActivate: [AuthGuard]
   },
 ];
 

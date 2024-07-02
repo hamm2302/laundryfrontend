@@ -1,18 +1,15 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import axiosInstance from '../../pages/library/axios';
+import axios from 'axios';
+import axiosInstance from 'src/app/pages/library/axios';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private tokenKey = 'authToken';
 
-  private tokenKey = 'auth_token';
-
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor() {}
 
   setToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
@@ -22,12 +19,24 @@ export class AuthService {
     return localStorage.getItem(this.tokenKey);
   }
 
-  jwt(){
-    let token = localStorage.getItem('token')
-    return new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Access-Control-Allow-Origin' : '*'
-    })
+  isLoggedIn(): boolean {
+    const token = this.getToken();
+    if (!token) {
+      return false;
+    }
+
+    try {
+      const decodedToken: { exp: number } = jwtDecode(token);
+
+      if (decodedToken.exp < Date.now() / 1000) {
+        this.removeToken();
+        return false;
+      }
+      return true;
+    } catch (error) {
+      console.error('Invalid token:', error);
+      return false;
+    }
   }
 
   removeToken(): void {
@@ -44,30 +53,43 @@ export class AuthService {
     }
   }
 
-  async isAuthenticated(): Promise<boolean> {
-    const token = await this.jwt();
-    return token !== null;
+  async infoLoginUser() {
+    const token = this.getToken();
+    const { data } = await axiosInstance.get('/info', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return data;
   }
 
-  public registerOwner(form : any){
-    return this.http.post(environment.ApiURL + '/register/owner',
-      {
-        "nama": form.nama,
-        "email": form.email,
-        "password": form.password
-      },
-      { responseType: 'json'}
-    )
+  async login(dataLogin: object) {
+    const token = this.getToken();
+    const { data } = await axiosInstance.post('/login', dataLogin, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return data;
   }
 
-  public login(form : any){
-    return this.http.post(environment.ApiURL + '/login',
-      {
-        "email": form.email,
-        "password": form.password
-      },
-      { responseType: 'json'}
-    )
+  async register(dataRegister: object) {
+    const token = this.getToken();
+    const { data } = await axiosInstance.post('/register', dataRegister, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return data;
   }
 
+  async loginWithGoogle(dataLogin: object) {
+    const token = this.getToken();
+    const { data } = await axiosInstance.post('/oauth/register', dataLogin, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return data;
+  }
 }

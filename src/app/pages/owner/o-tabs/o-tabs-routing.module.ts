@@ -11,9 +11,15 @@ const routes: Routes = [
       {
         path: 'beranda',
         loadChildren: () => import('./beranda/beranda.module').then( m => m.BerandaPageModule)
-      }
+      },
+      {
+        path: 'karyawan',
+        loadChildren: () => import('./karyawan/karyawan.module').then( m => m.KaryawanPageModule)
+      },
+    
     ]
   },
+
 ];
 
 @NgModule({

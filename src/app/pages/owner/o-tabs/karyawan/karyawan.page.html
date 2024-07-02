@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Karyawan</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="tambahKaryawan()">
+        <ion-label>Tambah</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Karyawan</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list lines="full">
+    <ion-item *ngFor="let karyawan of karyawanList">
+      <ion-label>
+        <h2>{{ karyawan.nama }}</h2>
+        <p>{{ karyawan.email }}</p>
+      </ion-label>
+      <ion-button color="danger" slot="end" (click)="hapusKaryawan(karyawan.id)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

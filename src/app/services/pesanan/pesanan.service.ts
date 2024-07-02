@@ -7,12 +7,12 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PesananService {
-  private apiUrl = 'http://127.0.0.1:8000/api';
+  private apiUrl = 'https://laundryin.gens.social/api';
 
   constructor(private http: HttpClient) { }
 
   simpanPesanan(data: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/simpan-pesanan`, data);
+    return this.http.post<any>(`${this.apiUrl}/pesanan`, data);
   }
 
   getAllPesanan(): Observable<any[]> {
@@ -21,7 +21,7 @@ export class PesananService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<any[]>(`${this.apiUrl}/pesananall`, { headers: headers })
+    return this.http.get<any[]>(`${this.apiUrl}/pesanan`, { headers: headers })
       .pipe(
         catchError(this.handleError)
       );

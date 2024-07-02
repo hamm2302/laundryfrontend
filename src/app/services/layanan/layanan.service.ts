@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class LayananService {
 
-  private apiUrl = 'http://127.0.0.1:8000/api'; // Ganti dengan URL API Anda
+  private apiUrl = 'https://laundryin.gens.social/api'; // Ganti dengan URL API Anda
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class LayananService {
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.get<any[]>(`${this.apiUrl}/layanans`, { headers: headers }).pipe(
+    return this.http.get<any[]>(`${this.apiUrl}/layanan`, { headers: headers }).pipe(
       catchError(error => {
         console.error('Error fetching layanan', error);
         return throwError(error); // Rethrow error to handle in component

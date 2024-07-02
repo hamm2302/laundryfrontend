@@ -10,7 +10,7 @@
       <div class="logo-container">
         <img src="assets/image/logo100.png" alt="Logo" class="logo">
         <p>Hello Owner !</p>
-        <ion-button expand="full">
+        <ion-button expand="full" (click)="logout()">
           <ion-icon slot="start" name="log-out-outline"></ion-icon>
           Logout
         </ion-button>
@@ -31,17 +31,6 @@
   <ion-content id="content" [fullscreen]="true">
     <ion-grid>
       <ion-row>
-        <ion-col size="12" size-md="6" size-lg="4">
-          <ion-card color="secondary">
-            <ion-card-header>
-              <ion-card-title>Total Users</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-icon name="people-outline" size="large"></ion-icon>
-              <h2>1234</h2>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
         <ion-col size="12" size-md="6" size-lg="4">
           <ion-card color="secondary">
             <ion-card-header>

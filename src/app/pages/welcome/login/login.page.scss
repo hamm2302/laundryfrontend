@@ -1,9 +1,8 @@
 ion-content{
-    --background: #e0dfe6;
+    --background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,32,68,1) 0%, rgba(69,113,182,1) 100%, rgba(9,32,68,1) 100%);;
 
     #header {
-        height: 33%;
-        background: #0AA5DB;
+        height: 27vh;
         border-radius: 0 0 20px 20px;
         display: flex;
         flex-direction: column;
@@ -39,6 +38,13 @@ ion-content{
             box-shadow: none;
             border-radius: 20px;
             padding: 15px 10px;
+
+            h2 {
+                color: #092044;
+                font-weight: 600;
+                font-size: 1.6rem;
+                text-transform: uppercase;
+            }
 
             ion-item {
                 --background: #efefef;

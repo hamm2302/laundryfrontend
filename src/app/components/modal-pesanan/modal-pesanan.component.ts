@@ -55,7 +55,7 @@ export class ModalPesananComponent implements OnInit {
       let token = localStorage.getItem('token');
       
       // URL endpoint API yang dituju
-      let apiUrl = 'http://127.0.0.1:8000/api/pesanan';
+      let apiUrl = 'https://laundryin.gens.social/api/pesanan';
 
       // Atur header untuk mengirim token
       const headers = new HttpHeaders({

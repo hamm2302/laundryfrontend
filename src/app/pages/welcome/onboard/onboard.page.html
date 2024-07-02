@@ -1,24 +1,33 @@
-<ion-content>
-  <div id="header">
-    <div id="app-bar">
-    </div>
-    <div id="logo">
-      <img src="../../../../assets/image/logo6.png" width="100px" height="100px" />
-    </div>
-    <h2>Jasa Laundry</h2>
+<ion-content class="ion-padding">
+  <!-- Image -->
+  <div class="img-container">
+    <ion-img src="../../../../assets/image/onb1.jpeg"></ion-img>
   </div>
 
-  <ion-card class="ion-padding">
-    <ion-card-content>
-      <h1>LaundryIn</h1>
-      <p>Cepat, Bersih dan Harumnyoooo</p>
+  <!-- Message -->
+  <div class="message-container">
+    <h1>Sudah <span class="text-warning">Pasti</span>
+      <br>Cucian Anda
+      <br><span class="text-danger">Besih dan Wangi</span>
+    </h1>
+  </div>
 
-      <ion-button expand="block" routerLink="/admin" class="ion-margin-bottom"
-        >Admin</ion-button
-      >
-      <ion-button expand="block" routerLink="/outlet" fill="outline"
-        >Outlet</ion-button
-      >
-    </ion-card-content>
-  </ion-card>
+  <!-- Buttons -->
+  <div>
+    <ion-button expand="block" color="secondary" class="ion-margin-bottom" routerLink="/admin">Login as Admin</ion-button>
+    <ion-button expand="block" color="primary"  fill="outline" class="ion-margin-bottom" routerLink="/outlet">Login as Outlet</ion-button>
+  </div>
+  
+  <!-- Other logins
+  <div class="social-login-container">
+    <p>atau login dengan</p>
+    <div class="social">
+      <div class="social-icon">
+        <ion-img src="../../../assets/icon/google.png" (click)="gLogin()"></ion-img>
+      </div>
+      <div class="social-icon">
+        <ion-img src="../../../assets/icon/fb.png" (click)="fLogin"></ion-img>
+      </div>
+    </div>
+  </div> -->
 </ion-content>
